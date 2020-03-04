@@ -35,12 +35,35 @@ class TableVC: UITableViewController
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        
+        if section == 1 {
+            return 4
+        }
+        
+        if section == 2 {
+            return 1
+        } else {
+                 return 8
+        }
+  
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row > 2 {
+     //       present(CollectionVC(collectionViewLayout: UICollectionViewFlowLayout()), animated: true, completion: nil)
+            
+            navigationController?.pushViewController(CollectionVC(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Title"
+    }
 
 }
